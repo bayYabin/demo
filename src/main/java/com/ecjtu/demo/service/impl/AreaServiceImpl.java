@@ -1,7 +1,9 @@
 package com.ecjtu.demo.service.impl;
 
 import com.ecjtu.demo.dao.AreaDao;
+import com.ecjtu.demo.dao.MsRoomMapper;
 import com.ecjtu.demo.entity.Area;
+import com.ecjtu.demo.entity.MsRoom;
 import com.ecjtu.demo.service.AreaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +17,21 @@ public class AreaServiceImpl implements AreaService {
     @Autowired
     private AreaDao areaDao;
 
+
+    @Autowired
+    private MsRoomMapper msRoomMapper;
+
+
+
     @Override
     public List<Area> getAreaList() {
         // 返回所有的区域信息
         return areaDao.queryArea();
+    }
+
+    @Override
+    public MsRoom selectByPrimaryKey(Long id) {
+        return msRoomMapper.selectByPrimaryKey(id);
     }
 
     @Override

@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecjtu.demo.dao.MsRoomMapper">
+  <resultMap id="BaseResultMap" type="com.ecjtu.demo.entity.MsRoom">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="source_id" jdbcType="INTEGER" property="sourceId" />
+    <result column="room_name" jdbcType="VARCHAR" property="roomName" />
+    <result column="room_type" jdbcType="INTEGER" property="roomType" />
+    <result column="room_content_type" jdbcType="INTEGER" property="roomContentType" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="password_required" jdbcType="INTEGER" property="passwordRequired" />
+    <result column="student_pwd" jdbcType="VARCHAR" property="studentPwd" />
+    <result column="teacher_pwd" jdbcType="VARCHAR" property="teacherPwd" />
+    <result column="assistant_pwd" jdbcType="VARCHAR" property="assistantPwd" />
+    <result column="patrol_pwd" jdbcType="VARCHAR" property="patrolPwd" />
+    <result column="video_type" jdbcType="INTEGER" property="videoType" />
+    <result column="video_framerate" jdbcType="INTEGER" property="videoFramerate" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="teacher_id" jdbcType="BIGINT" property="teacherId" />
+    <result column="room_third_id" jdbcType="VARCHAR" property="roomThirdId" />
+    <result column="kcx_user_id" jdbcType="VARCHAR" property="kcxUserId" />
+    <result column="room_cup" jdbcType="INTEGER" property="roomCup" />
+    <result column="homework_template_id" jdbcType="BIGINT" property="homeworkTemplateId" />
+    <result column="course_id" jdbcType="BIGINT" property="courseId" />
+    <result column="is_end" jdbcType="INTEGER" property="isEnd" />
+    <result column="template_id" jdbcType="BIGINT" property="templateId" />
+    <result column="room_mark" jdbcType="INTEGER" property="roomMark" />
+    <result column="class_hour" jdbcType="INTEGER" property="classHour" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, source_id, room_name, room_type, room_content_type, start_time, end_time, password_required, 
+    student_pwd, teacher_pwd, assistant_pwd, patrol_pwd, video_type, video_framerate, 
+    is_delete, create_time, update_time, teacher_id, room_third_id, kcx_user_id, room_cup, 
+    homework_template_id, course_id, is_end, template_id, room_mark, class_hour
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ms_room
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ms_room
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ecjtu.demo.entity.MsRoom">
+    insert into ms_room (id, source_id, room_name, 
+      room_type, room_content_type, start_time, 
+      end_time, password_required, student_pwd, 
+      teacher_pwd, assistant_pwd, patrol_pwd, 
+      video_type, video_framerate, is_delete, 
+      create_time, update_time, teacher_id, 
+      room_third_id, kcx_user_id, room_cup, 
+      homework_template_id, course_id, is_end, 
+      template_id, room_mark, class_hour
+      )
+    values (#{id,jdbcType=BIGINT}, #{sourceId,jdbcType=INTEGER}, #{roomName,jdbcType=VARCHAR}, 
+      #{roomType,jdbcType=INTEGER}, #{roomContentType,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{passwordRequired,jdbcType=INTEGER}, #{studentPwd,jdbcType=VARCHAR}, 
+      #{teacherPwd,jdbcType=VARCHAR}, #{assistantPwd,jdbcType=VARCHAR}, #{patrolPwd,jdbcType=VARCHAR}, 
+      #{videoType,jdbcType=INTEGER}, #{videoFramerate,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{teacherId,jdbcType=BIGINT}, 
+      #{roomThirdId,jdbcType=VARCHAR}, #{kcxUserId,jdbcType=VARCHAR}, #{roomCup,jdbcType=INTEGER}, 
+      #{homeworkTemplateId,jdbcType=BIGINT}, #{courseId,jdbcType=BIGINT}, #{isEnd,jdbcType=INTEGER}, 
+      #{templateId,jdbcType=BIGINT}, #{roomMark,jdbcType=INTEGER}, #{classHour,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ecjtu.demo.entity.MsRoom">
+    insert into ms_room
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sourceId != null">
+        source_id,
+      </if>
+      <if test="roomName != null">
+        room_name,
+      </if>
+      <if test="roomType != null">
+        room_type,
+      </if>
+      <if test="roomContentType != null">
+        room_content_type,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="passwordRequired != null">
+        password_required,
+      </if>
+      <if test="studentPwd != null">
+        student_pwd,
+      </if>
+      <if test="teacherPwd != null">
+        teacher_pwd,
+      </if>
+      <if test="assistantPwd != null">
+        assistant_pwd,
+      </if>
+      <if test="patrolPwd != null">
+        patrol_pwd,
+      </if>
+      <if test="videoType != null">
+        video_type,
+      </if>
+      <if test="videoFramerate != null">
+        video_framerate,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="teacherId != null">
+        teacher_id,
+      </if>
+      <if test="roomThirdId != null">
+        room_third_id,
+      </if>
+      <if test="kcxUserId != null">
+        kcx_user_id,
+      </if>
+      <if test="roomCup != null">
+        room_cup,
+      </if>
+      <if test="homeworkTemplateId != null">
+        homework_template_id,
+      </if>
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="isEnd != null">
+        is_end,
+      </if>
+      <if test="templateId != null">
+        template_id,
+      </if>
+      <if test="roomMark != null">
+        room_mark,
+      </if>
+      <if test="classHour != null">
+        class_hour,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="sourceId != null">
+        #{sourceId,jdbcType=INTEGER},
+      </if>
+      <if test="roomName != null">
+        #{roomName,jdbcType=VARCHAR},
+      </if>
+      <if test="roomType != null">
+        #{roomType,jdbcType=INTEGER},
+      </if>
+      <if test="roomContentType != null">
+        #{roomContentType,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="passwordRequired != null">
+        #{passwordRequired,jdbcType=INTEGER},
+      </if>
+      <if test="studentPwd != null">
+        #{studentPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherPwd != null">
+        #{teacherPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantPwd != null">
+        #{assistantPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="patrolPwd != null">
+        #{patrolPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="videoType != null">
+        #{videoType,jdbcType=INTEGER},
+      </if>
+      <if test="videoFramerate != null">
+        #{videoFramerate,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teacherId != null">
+        #{teacherId,jdbcType=BIGINT},
+      </if>
+      <if test="roomThirdId != null">
+        #{roomThirdId,jdbcType=VARCHAR},
+      </if>
+      <if test="kcxUserId != null">
+        #{kcxUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="roomCup != null">
+        #{roomCup,jdbcType=INTEGER},
+      </if>
+      <if test="homeworkTemplateId != null">
+        #{homeworkTemplateId,jdbcType=BIGINT},
+      </if>
+      <if test="courseId != null">
+        #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="isEnd != null">
+        #{isEnd,jdbcType=INTEGER},
+      </if>
+      <if test="templateId != null">
+        #{templateId,jdbcType=BIGINT},
+      </if>
+      <if test="roomMark != null">
+        #{roomMark,jdbcType=INTEGER},
+      </if>
+      <if test="classHour != null">
+        #{classHour,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ecjtu.demo.entity.MsRoom">
+    update ms_room
+    <set>
+      <if test="sourceId != null">
+        source_id = #{sourceId,jdbcType=INTEGER},
+      </if>
+      <if test="roomName != null">
+        room_name = #{roomName,jdbcType=VARCHAR},
+      </if>
+      <if test="roomType != null">
+        room_type = #{roomType,jdbcType=INTEGER},
+      </if>
+      <if test="roomContentType != null">
+        room_content_type = #{roomContentType,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="passwordRequired != null">
+        password_required = #{passwordRequired,jdbcType=INTEGER},
+      </if>
+      <if test="studentPwd != null">
+        student_pwd = #{studentPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherPwd != null">
+        teacher_pwd = #{teacherPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="assistantPwd != null">
+        assistant_pwd = #{assistantPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="patrolPwd != null">
+        patrol_pwd = #{patrolPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="videoType != null">
+        video_type = #{videoType,jdbcType=INTEGER},
+      </if>
+      <if test="videoFramerate != null">
+        video_framerate = #{videoFramerate,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teacherId != null">
+        teacher_id = #{teacherId,jdbcType=BIGINT},
+      </if>
+      <if test="roomThirdId != null">
+        room_third_id = #{roomThirdId,jdbcType=VARCHAR},
+      </if>
+      <if test="kcxUserId != null">
+        kcx_user_id = #{kcxUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="roomCup != null">
+        room_cup = #{roomCup,jdbcType=INTEGER},
+      </if>
+      <if test="homeworkTemplateId != null">
+        homework_template_id = #{homeworkTemplateId,jdbcType=BIGINT},
+      </if>
+      <if test="courseId != null">
+        course_id = #{courseId,jdbcType=BIGINT},
+      </if>
+      <if test="isEnd != null">
+        is_end = #{isEnd,jdbcType=INTEGER},
+      </if>
+      <if test="templateId != null">
+        template_id = #{templateId,jdbcType=BIGINT},
+      </if>
+      <if test="roomMark != null">
+        room_mark = #{roomMark,jdbcType=INTEGER},
+      </if>
+      <if test="classHour != null">
+        class_hour = #{classHour,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ecjtu.demo.entity.MsRoom">
+    update ms_room
+    set source_id = #{sourceId,jdbcType=INTEGER},
+      room_name = #{roomName,jdbcType=VARCHAR},
+      room_type = #{roomType,jdbcType=INTEGER},
+      room_content_type = #{roomContentType,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      password_required = #{passwordRequired,jdbcType=INTEGER},
+      student_pwd = #{studentPwd,jdbcType=VARCHAR},
+      teacher_pwd = #{teacherPwd,jdbcType=VARCHAR},
+      assistant_pwd = #{assistantPwd,jdbcType=VARCHAR},
+      patrol_pwd = #{patrolPwd,jdbcType=VARCHAR},
+      video_type = #{videoType,jdbcType=INTEGER},
+      video_framerate = #{videoFramerate,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      teacher_id = #{teacherId,jdbcType=BIGINT},
+      room_third_id = #{roomThirdId,jdbcType=VARCHAR},
+      kcx_user_id = #{kcxUserId,jdbcType=VARCHAR},
+      room_cup = #{roomCup,jdbcType=INTEGER},
+      homework_template_id = #{homeworkTemplateId,jdbcType=BIGINT},
+      course_id = #{courseId,jdbcType=BIGINT},
+      is_end = #{isEnd,jdbcType=INTEGER},
+      template_id = #{templateId,jdbcType=BIGINT},
+      room_mark = #{roomMark,jdbcType=INTEGER},
+      class_hour = #{classHour,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

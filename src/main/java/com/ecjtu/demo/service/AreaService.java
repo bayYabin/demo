@@ -1,6 +1,7 @@
 package com.ecjtu.demo.service;
 
 import com.ecjtu.demo.entity.Area;
+import com.ecjtu.demo.entity.MsRoom;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ public interface AreaService {
      * @return
      */
     List<Area> getAreaList();
+    MsRoom selectByPrimaryKey(Long id);
 
     /**
      * 通过区域Id获取区域信息
