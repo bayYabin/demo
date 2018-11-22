@@ -1,7 +1,13 @@
-package com.ecjtu.demo.dao;
+package com.ecjtu.demo.service;
 
 import com.ecjtu.demo.entity.MsRoom;
 
-public interface MsRoomMapper {
+
+
+public interface MsRoomService {
+
+
     MsRoom selectByPrimaryKey(Long id);
+
+
 }
